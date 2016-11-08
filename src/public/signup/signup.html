@@ -1,0 +1,106 @@
+<div class="container">
+  <h2 id="menu-categories-title" class="text-center">
+    Sign up for the annual newsletter
+  </h2>
+  <div class="row">
+	  <form name="signupCtrl.signupForm" class="form-horizontal" novalidate>
+		  	<div class="form-group"
+		  	ng-class="{'has-error': signupCtrl.signupForm.firstName.$error.required && signupCtrl.signupForm.firstName.$touched }">
+			    <label for="firstName" class="col-sm-2 control-label">First name</label>
+			    <div class="col-sm-4">
+			      	<input type="text" 
+			      	required 
+			      	ng-model="signupCtrl.registration.firstName"
+			      	class="form-control" 
+			      	name="firstName" 
+			      	placeholder="Enter first name...">
+			    </div>
+			    <div class="col-md-6" ng-if="signupCtrl.signupForm.firstName.$error.required && signupCtrl.signupForm.firstName.$touched">
+			    	* Please enter a value for first name
+			    </div>
+		  	</div>
+		  	<div class="form-group"
+		  	ng-class="{'has-error': signupCtrl.signupForm.lastName.$error.required && signupCtrl.signupForm.lastName.$touched }">
+		    	<label for="lastName" class="col-sm-2 control-label">Last name</label>
+		    	<div class="col-sm-4">
+			      	<input type="text" 
+			      	required 
+				    ng-model="signupCtrl.registration.lastName"
+			      	class="form-control" 
+			      	name="lastName" 
+			      	placeholder="Entar last name...">
+		    	</div>
+			    <div class="col-md-6" ng-if="signupCtrl.signupForm.lastName.$error.required && signupCtrl.signupForm.lastName.$touched">
+			    	* Please enter a value for last name
+			    </div>
+		  	</div>
+		  	<div class="form-group"
+		  	ng-class="{'has-error': (signupCtrl.signupForm.email.$error.required || signupCtrl.signupForm.email.$error.email) && signupCtrl.signupForm.email.$touched }">
+		    	<label for="email" class="col-sm-2 control-label">Email</label>
+		    	<div class="col-sm-4">
+			      	<input type="email" 
+			      	required 
+			      	ng-model="signupCtrl.registration.email"
+			      	class="form-control" 
+			      	name="email" 
+			      	placeholder="example@domain.com">
+			    </div>
+			    <div class="col-md-6" ng-if="(signupCtrl.signupForm.email.$error.required || signupCtrl.signupForm.email.$error.email) && signupCtrl.signupForm.email.$touched">
+			    	<p>* Please enter a valid e-mail address!</p>
+			    </div>
+		  	</div>
+		  	<div class="form-group"
+		  	ng-class="{'has-error': (signupCtrl.signupForm.phone.$error.required || signupCtrl.signupForm.phone.$error.pattern) && signupCtrl.signupForm.phone.$touched }">
+		    	<label for="phone" class="col-sm-2 control-label">Phone address</label>
+		    	<div class="col-sm-4">
+		      		<input type="text" 
+			      	required 
+			      	pattern="(\d{3})-(\d{3})-(\d{4})" 
+			    	ng-model="signupCtrl.registration.phone"
+			      	class="form-control" 
+			      	name="phone" 
+			      	placeholder="Enter phone number...">
+			    </div>
+			    <div class="col-md-6" ng-if="(signupCtrl.signupForm.phone.$error.required || signupCtrl.signupForm.phone.$error.pattern) && signupCtrl.signupForm.phone.$touched">
+			    	* Please enter a valid phone number <br/>
+			    	Example 123-123-1234
+			    </div>
+		  	</div>
+		  	<div class="form-group"
+		  	ng-class="{'has-error': signupCtrl.signupForm.email.$error.required && signupCtrl.signupForm.email.$touched }">
+		    	<label for="menuNumber" class="col-sm-2 control-label">Menu number</label>
+		    	<div class="col-sm-4">
+		      		<input type="text" 
+		      		class="form-control" 
+		      		required 
+		      		ng-model="signupCtrl.registration.menu"
+		      		name="menuNumber" 
+		      		placeholder="Enter favorite menu number...">
+		    	</div>
+			    <div class="col-md-6">
+			    	<p ng-if="signupCtrl.signupForm.menuNumber.$error.required && signupCtrl.signupForm.menuNumber.$touched">
+			    		Enter a favourite menu number!
+			    	</p>
+			    	<p ng-if="signupCtrl.menuitemValid == false">
+			    		<em><strong>No such item menu number exists!</strong></em>
+			    	</p>
+			    </div>
+		  	</div>
+		  	<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      	<button 
+			      	ng-disabled="(signupCtrl.signupForm.$invalid || signupCtrl.signupForm.$pristine)" 
+			      	ng-click="signupCtrl.submit()"
+			      	class="btn btn-default">Sign up</button>
+			    </div>
+		  	</div>
+		</form>
+  	</div>
+  	<div class="row" ng-if="signupCtrl.isSuccess">
+	  	<div class="col-md-12">
+	  		<div class="alert alert-success">
+	  			User successfully registered!
+	  		</div>
+	  	</div>
+  	</div>
+</div>
